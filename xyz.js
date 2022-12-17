@@ -1,9 +1,10 @@
 var form= document.getElementById('addForm');
 var itemList= document.getElementById('items');
+var filter = document.getElementById('filter')
 form.addEventListener('submit', addItem)
 itemList.addEventListener('click', removeItem)
 itemList.addEventListener('submit', addBtn)
-
+filter.addEventListener('keyup', filterItems)
 function addItem(e){
     e.preventDefault();
     var newItem = document.getElementById('item').value;
@@ -44,6 +45,21 @@ function addBtn (e){
     li.appendChild(editBtn)
     itemList.appendChild(li)
 
+}
+
+function filterItems(e){
+    var text=e.target.value.toLowerCase();
+
+    var items = itemList.getElementsByTagName('li')
+    Array.from(items).forEach(function(item){
+        var itemName = item.firstChild.textContent;
+        if(itemName.toLowerCase().indexOf(text)!=-1 ){
+            item.style.display='block'
+
+        }else{
+            item.style.display='none'
+        }
+    })
 }
 
 
