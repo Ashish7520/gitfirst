@@ -5,16 +5,22 @@ form.addEventListener('submit', addItem)
 itemList.addEventListener('click', removeItem)
 itemList.addEventListener('submit', addBtn)
 filter.addEventListener('keyup', filterItems)
+
 function addItem(e){
     e.preventDefault();
     var newItem = document.getElementById('item').value;
+    var newDescription = document.getElementById('description').value;
+
     var li = document.createElement('li')
     li.className='list-group-item';
-    li.appendChild(document.createTextNode(newItem));
+    li.appendChild(document.createTextNode(`${newItem} ${ newDescription}`));
+   // li.appendChild(document.createTextNode(newDescription));
+
+
     var deleteBtn = document.createElement('button')
     var editBtn = document.createElement('button')
     deleteBtn.className='btn btn-danger btn-sm float-right delete'
-    editBtn.className='btn btn-danger btn-sm float-right delete'
+    editBtn.className='btn btn-succss btn-sm float-right edit'
     deleteBtn.appendChild(document.createTextNode('X'))
     editBtn.appendChild(document.createTextNode('EDIT'))
     li.appendChild(deleteBtn)
@@ -43,9 +49,9 @@ function addBtn (e){
     editBtn.className='btn btn-danger btn-sm float-right '
     editBtn.appendChild(document.createTextNode('EDIT'))
     li.appendChild(editBtn)
-    itemList.appendChild(li)
+    itemList.appendChild(li) 
 
-}
+} 
 
 function filterItems(e){
     var text=e.target.value.toLowerCase();
