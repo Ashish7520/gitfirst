@@ -11,6 +11,7 @@
             <input type="tel" name="phoneNumber" /><br><br>
             <button style="background-color: brown; color: azure;">submit</button>
         </form>
+        <ul id="listOfUser"></ul>
         <script>
             function saveToLocalStorage(event){
                 event.preventDefault();
@@ -27,8 +28,18 @@
  }
 
  let obj_serialized = JSON.stringify(obj)
- localStorage.setItem('userdetails', obj_serialized)
+ localStorage.setItem(obj.email1 , obj_serialized)
+ 
+ showListOfUserOnScreen(obj);
+
+
+ 
             }
+function showListOfUserOnScreen(user){
+    const parentNode = document.getElementById('listOfUser')
+    const childHTML = `<li> ${user.name1} - ${user.email1}</li>`
+    parentNode.innerHTML= parentNode.innerHTML + childHTML
+}
         </script>
 
     </body>
