@@ -17,9 +17,17 @@
                 const name1 =event.target.username.value
                 const email1=event.target.emailId.value
                 const phone1=event.target.phoneNumber.value
- localStorage.setItem('name', name1)
+ /*localStorage.setItem('name', name1)
  localStorage.setItem('eamil', email1)
- localStorage.setItem('phonenumber', phone1)
+ localStorage.setItem('phonenumber', phone1)*/
+ let obj = {
+    name1,
+    email1,
+    phone1,
+ }
+
+ let obj_serialized = JSON.stringify(obj)
+ localStorage.setItem('userdetails', obj_serialized)
             }
         </script>
 
