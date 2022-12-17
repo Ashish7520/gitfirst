@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <header  style="text-align: center; background-color: blue; color: aliceblue;">Call center registration</header>
+        <form onsubmit="saveToLocalStorage(event)" style="color: rgb(13, 0, 255); background-color: beige; text-align: center;  ;">
+            <label>Name</label><br>
+            <input type="text" name="username" required /><br>
+            <label>Email</label><br>
+            <input type="email" name="emailId" required /><br>
+            <label>Phone Number</label><br>
+            <input type="tel" name="phoneNumber" /><br><br>
+            <button style="background-color: brown; color: azure;">submit</button>
+        </form>
+        <script>
+            function saveToLocalStorage(event){
+                event.preventDefault();
+                const name1 =event.target.username.value
+                const email1=event.target.emailId.value
+                const phone1=event.target.phoneNumber.value
+ localStorage.setItem('name', name1)
+ localStorage.setItem('eamil', email1)
+ localStorage.setItem('phonenumber', phone1)
+            }
+        </script>
+
+    </body>
+</html>

@@ -64,6 +64,7 @@ function filterItems(e){
 
         }else{
             item.style.display='none'
+            
         }
     })
 }
