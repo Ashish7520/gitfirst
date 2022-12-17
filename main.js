@@ -1,26 +1,22 @@
-console.log(document.domain)
-console.log(document.URL)
-console.log(document.title)
-console.log(document.doctype)
-console.log(document.head)
-console.log(document.body)
-console.log(document.all)
-console.log(document.forms)
-console.log(document.links)
-console.log(document.images)
+/*var item=document.querySelectorAll('li')
+console.log(item)
+item[1].style.color='green'
+
+var odd = document.querySelectorAll('li:nth-child(odd)');
+for(i=0; i<odd.length; i++){
+    odd[i].style.backgroundColor='green'
+}
+
+queryselector do impact on first element among all element
+while queryselectorall impact on all element 
 
 
-var headerTitle=document.getElementById('header-title')
-console.log(headerTitle)
-headerTitle.innerText='Hello'
+var newDiv=document.createElement('div')
+console.log(newDiv)
 
-var header = document.getElementById('main-header')
-header.style.border='solid 3px #000'
+var newDivText=document.createTextNode('Hello')
+newDiv.appendChild(newDivText)
 
-var xyz=document.querySelectorAll('.title')
-console.log(xyz)
-
-xyz[0].style.color='green';
-
-
-
+var container = document.querySelector('header .container');
+var h1 = document.querySelector('header h1')
+container.insertBefore(newDiv, h1) */
