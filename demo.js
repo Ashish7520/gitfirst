@@ -1,10 +1,9 @@
-var student={
-    age:20
+let multiply = function(a,b){
+    console.log(a*b);
 }
 
-var ageOfStudent = function(){
-    return this.age
-}
+let multiplyByTwo = multiply.bind(this, 2);
+multiplyByTwo(5);
 
-var bound=ageOfStudent.bind(student)
-console.log(bound())
+let multiplyByThree= multiply.bind(this, 3);
+multiplyByThree(10);
