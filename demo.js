@@ -42,7 +42,15 @@ class student{
 
    }
 
-
+setPlacementAge(minAge){
+    return (minMarks)=>{
+        if(this.marks>minMarks && this.age>minAge){
+            console.log(this.name+'is ready for placement')
+        }else{
+            this.name+"is not ready for placement"
+        }
+    }
+}
 
 
 
@@ -73,3 +81,9 @@ Diya.eligible();
 Siya.eligible();
 
 Rooh.eligible();
+
+Riya.setPlacementAge(18)(40);
+Hiya.setPlacementAge(18)(40);
+Diya.setPlacementAge(18)(40);
+Siya.setPlacementAge(18)(40);
+Rooh.setPlacementAge(18)(40);
