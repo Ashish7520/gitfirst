@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="formId" onsubmit="saveToLocalStorage(event)">
+    <label>Choose The Expense Amount</label>
+    <input type="number" id="expense" class="expense" name="expense"/>
+    <label>Description</label>
+    <input type="text" id="description" class="description" name="description" />
+    <label>Catagory</label>
+    <select class="catagory" id="catagory" name="catagory">
+        <option>Movie</option>
+        <option>snacks</option>
+        <option>Hospital</option>
+        <option>Day-to-Day</option>
+
+    </select>
+
+<button>Add Expense</button>
+
+    </form>
+    <ul id="items" class="list-group">
+        <li class="list-group-item" > 
+            amount-description-catagory
+            <input type="button" value="Edit" class="btn btn-primary btn-sm float-right edit">
+            <input type="button" value="remove" class="btn btn-danger btn-sm float-right delete" >
+            
+        </li>
+        </ul>
+<script>
+     function saveToLocalStorage(event){
+        event.preventDefault();
+        const expense = event.target.expense.value
+        const description = event.target.description.value
+        const catagory = event.target.catagory.value
+
+        localStorage.setItem('expense', expense)
+        localStorage.setItem('description', description)
+        localStorage.setItem('catagory', catagory)
+
+        const obj={
+            expense:expense,
+            description:description,
+            catagory: catagory
+        }
+        localStorage.setItem(obj.description, JSON.stringify(obj))
+    }
+
+    var form=document.getElementById('formId')
+var itemList=document.getElementById('items')
+
+form.addEventListener('submit', addItem)
+itemList.addEventListener('click', removeItem)
+itemList.addEventListener('click', editItem)
+
+function addItem(event){
+    event.preventDefault();
+
+    var newItem= document.getElementById('expense').value
+    var description= document.getElementById("description").value
+    var catagory = document.getElementById("catagory").value
+
+    var li=document.createElement('li')
+    li.className='list-group-item'
+    let totalDescriptionOfTheExpence = `${newItem}-${description}-${catagory} `
+    li.appendChild(document.createTextNode(totalDescriptionOfTheExpence))
+
+    var editBtn=document.createElement('button')
+    editBtn.className="btn btn-primary btn-sm float-right Edit"
+
+
+    editBtn.appendChild(document.createTextNode('EDIT'))
+
+    li.appendChild(editBtn)
+    var deleteBtn=document.createElement('button')
+    deleteBtn.className="btn btn-primary btn-sm float-right Delete"
+    deleteBtn.appendChild(document.createTextNode('delete'))
+    li.appendChild(deleteBtn)
+    
+    itemList.appendChild(li) 
+
+   
+
+}
+
+
+function removeItem(event){
+        event.preventDefault();
+        if(event.target.classList.contains('Delete')){
+            if(confirm('Are you sure?')){
+                var li=event.target.parentElement;
+                itemList.removeChild(li)
+
+                localStorage.removeItem('description')
+            }
+        }
+    }
+   
+    function editItem(event){
+        if(event.target.classList.contains('edit')){
+
+
+
+        }
+
+
+    }
+
+</script>
+</body>
+</html>
