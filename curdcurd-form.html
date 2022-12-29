@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <header  style="text-align: center; background-color: blue; color: aliceblue;">Call center registration</header>
+        <form onsubmit="saveToLocalStorage(event)" style="color: rgb(13, 0, 255); background-color: beige; text-align: center;  ;">
+            <label>Name</label><br>
+            <input type="text" name="username" required /><br>
+            <label>Email</label><br>
+            <input type="email" name="emailId" required /><br>
+            <label>Phone Number</label><br>
+            <input type="tel" name="phoneNumber" /><br><br>
+            <button style="background-color: brown; color: azure;">submit</button>
+        </form>
+        <ul id="listOfUser"></ul>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+        <script>
+            function saveToLocalStorage(event){
+                event.preventDefault();
+                const name1 =event.target.username.value
+                const email1=event.target.emailId.value
+                const phone1=event.target.phoneNumber.value
+ /*localStorage.setItem('name', name1)
+ localStorage.setItem('eamil', email1)
+ localStorage.setItem('phonenumber', phone1)*/
+ let obj = {
+    name1,
+    email1,
+    phone1,
+ }
+
+ let obj_serialized = JSON.stringify(obj)
+//  localStorage.setItem(obj.email1 , obj_serialized)
+axios.post('https://crudcrud.com/api/90cc66267f5b4739a126a3dce977198b/appointmentData', obj)
+.then((response)=>{
+    showListOfUserOnScreen(response.data)
+    console.log(response)
+})
+.catch((err)=>console.log(err))
+//  showListOfUserOnScreen(obj);
+
+
+ 
+            }
+function showListOfUserOnScreen(user){
+    const parentNode = document.getElementById('listOfUser')
+    const childHTML = `<li> ${user.name1} - ${user.email1}</li>`
+    parentNode.innerHTML= parentNode.innerHTML + childHTML
+}
+        </script>
+
+    </body>
+</html>
