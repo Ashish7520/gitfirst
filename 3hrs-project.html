@@ -25,12 +25,12 @@
 
     </form>
     <ul id="items" class="list-group">
-        <li class="list-group-item" > 
+        <!-- <li class="list-group-item" > 
             amount-description-catagory
             <input type="button" value="Edit" class="btn btn-primary btn-sm float-right edit">
             <input type="button" value="remove" class="btn btn-danger btn-sm float-right delete" >
             
-        </li>
+        </li> -->
         </ul>
 <script>
      function saveToLocalStorage(event){
@@ -39,9 +39,9 @@
         const description = event.target.description.value
         const catagory = event.target.catagory.value
 
-        localStorage.setItem('expense', expense)
-        localStorage.setItem('description', description)
-        localStorage.setItem('catagory', catagory)
+        // localStorage.setItem('expense', expense)
+        // localStorage.setItem('description', description)
+        // localStorage.setItem('catagory', catagory)
 
         const obj={
             expense:expense,
@@ -104,8 +104,10 @@ function removeItem(event){
     function editItem(event){
         if(event.target.classList.contains('edit')){
 
-
-
+            document.getElementById.expense.value=expense
+            document.getElementById.description.value=description
+            document.getElementById.catagory.value=catagory
+            removeItem(event)
         }
 
 

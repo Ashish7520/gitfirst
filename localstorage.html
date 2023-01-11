@@ -15,20 +15,20 @@
         <script>
             function saveToLocalStorage(event){
                 event.preventDefault();
-                const name1 =event.target.username.value
-                const email1=event.target.emailId.value
-                const phone1=event.target.phoneNumber.value
+                const name =event.target.username.value
+                const email=event.target.emailId.value
+                const phone=event.target.phoneNumber.value
  /*localStorage.setItem('name', name1)
  localStorage.setItem('eamil', email1)
  localStorage.setItem('phonenumber', phone1)*/
  let obj = {
-    name1,
-    email1,
-    phone1,
+    name,
+    email,
+    phone,
  }
 
  let obj_serialized = JSON.stringify(obj)
- localStorage.setItem(obj.email1 , obj_serialized)
+ localStorage.setItem(obj.email, obj_serialized)
  
  showListOfUserOnScreen(obj);
 
@@ -37,7 +37,7 @@
             }
 function showListOfUserOnScreen(user){
     const parentNode = document.getElementById('listOfUser')
-    const childHTML = `<li> ${user.name1} - ${user.email1}</li>`
+    const childHTML = `<li> ${user.name} - ${user.email}</li>`
     parentNode.innerHTML= parentNode.innerHTML + childHTML
 }
         </script>
